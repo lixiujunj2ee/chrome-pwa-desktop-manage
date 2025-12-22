@@ -1,0 +1,42 @@
+app-id: com.github.chrome.PWADesktopManage
+runtime: org.gnome.Platform
+runtime-version: '48'
+sdk: org.gnome.Sdk
+# 这里保持不变，Flatpak 会自动去 /app/bin 找
+command: start_app.sh
+
+finish-args:
+  - --socket=x11
+  - --socket=wayland
+  - --device=dri
+  - --share=ipc
+  - --share=network
+  - --filesystem=home # 必须有 home 权限才能读写快捷方式目录
+  - --env=PYTHONPATH=/app/site-packages # 确保能找到 python 库
+
+modules:
+  - name: PWA-Desktop-Manage
+    buildsystem: simple
+    build-commands:
+      # 1. 拷贝 Flet 编译出的所有内容到 /app 根目录
+      - cp -r build/linux/* "${FLATPAK_DEST}/"
+      
+      # 2. 关键修复：将启动脚本安装到 bin 目录
+      - install -Dm755 start_app.sh "${FLATPAK_DEST}/bin/start_app.sh"
+      
+      # 3. 拷贝你的二进制工具
+      - cp pwa "${FLATPAK_DEST}/"
+      
+      # 4. 赋予权限
+      - chmod +x "${FLATPAK_DEST}/chrome_pwa_desktop_manage"
+      - chmod +x "${FLATPAK_DEST}/bin/start_app.sh"
+      - chmod +x "${FLATPAK_DEST}/pwa"
+
+      # 5. 安装图标和桌面文件
+      - install -Dm644 com.github.chrome.PWADesktopManage.png "${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/com.github.chrome.PWADesktopManage.png"
+      - install -Dm644 com.github.chrome.PWADesktopManage.desktop "${FLATPAK_DEST}/share/applications/com.github.chrome.PWADesktopManage.desktop"
+
+    sources:
+      - type: dir
+        path: .
+
