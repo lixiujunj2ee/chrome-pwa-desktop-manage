@@ -1,0 +1,15 @@
+flet build linux
+flatpak install flathub org.gnome.Platform//48 org.gnome.Sdk//48 -y
+flatpak-builder --user --install --force-clean --disable-rofiles-fuse build-dir com.github.chrome.PWADesktopManage.yml
+flatpak build-bundle repo PWA_Desktop_Manage_v1.flatpak com.github.chrome.PWADesktopManage
+
+flatpak-builder --user --install --force-clean --disable-rofiles-fuse build-dir com.github.chrome.PWADesktopManage.yml
+
+
+flatpak-builder --force-clean --disable-rofiles-fuse --repo=repo build-dir com.github.chrome.PWADesktopManage.yml
+
+flatpak install --user PWA_Desktop_Manage_v1.flatpak
+
+find . -name 'com.github.chrome.PWADesktopManage.desktop' -delete
+
+cp com.github.chrome.PWADesktopManage.desktop ~/.local/share/applications/
