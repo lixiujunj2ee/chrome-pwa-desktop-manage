@@ -45,9 +45,15 @@ modules:
         <component type="desktop-application">
           <id>com.github.chrome.PWADesktopManage</id>
           <name>PWA Desktop Manage</name>
+<<<<<<< HEAD
           <summary>Manage your PWA application</summary>
           <description>
             <p>This is a PWA desktop management tool developed by an individual.</p>
+=======
+          <summary>管理你的 PWA 应用</summary>
+          <description>
+            <p>这是一个个人开发的 PWA 桌面管理工具。</p>
+>>>>>>> 25470b140b27ae673c20124e2d929528704d8137
           </description>
           <launchable type="desktop-id">com.github.chrome.PWADesktopManage.desktop</launchable>
           <releases>

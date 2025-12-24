@@ -7,6 +7,7 @@
   <releases>
     <release version="1.0.0" date="2025-12-25" />
   </releases>
+<<<<<<< HEAD
   <screenshots>
   <screenshot type="default">
     <image type="source">https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage/blob/main/images/demo_1.png</image>
@@ -26,5 +27,7 @@
   </screenshot>
 </screenshots>
 
+=======
+>>>>>>> 25470b140b27ae673c20124e2d929528704d8137
 </component>
 
