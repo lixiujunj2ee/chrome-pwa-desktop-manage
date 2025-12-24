@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>com.github.chrome.PWADesktopManage</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
   <name>PWADesktopManage</name>
   <summary>PWA Desktop Manager</summary>
+  
+  <description>
+    <p>
+      PWADesktopManage is a tool to help you manage Progressive Web Apps (PWAs)
+      directly from your desktop.
+    </p>
+  </description>
+
   <launchable type="desktop-id">com.github.chrome.PWADesktopManage.desktop</launchable>
+  
   <releases>
     <release version="1.0.0" date="2025-12-25" />
   </releases>
-<<<<<<< HEAD
+  
   <screenshots>
-  <screenshot type="default">
-    <image type="source">https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage/blob/main/images/demo_1.png</image>
-    <caption>HOME</caption>
-  </screenshot>
-  <screenshot>
-    <image type="source">https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage/blob/main/images/demo_2.png</image>
-    <caption>PWA List View</caption>
-  </screenshot>
-  <screenshot>
-    <image type="source">https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage/blob/main/images/demo_3.png</image>
-    <caption>PWA Command</caption>
-  </screenshot>
-  <screenshot>
-    <image type="source">https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage/blob/main/images/demo_4.png</image>
-    <caption>PWA Set Custom Shortcuts</caption>
-  </screenshot>
-</screenshots>
-
-=======
->>>>>>> 25470b140b27ae673c20124e2d929528704d8137
+    <screenshot type="default">
+      <image type="source">github.com</image>
+      <caption>HOME</caption>
+    </screenshot>
+    <screenshot>
+      <image type="source">github.com</image>
+      <caption>PWA List View</caption>
+    </screenshot>
+    <screenshot>
+      <image type="source">github.com</image>
+      <caption>PWA Command</caption>
+    </screenshot>
+    <screenshot>
+      <image type="source">github.com</image>
+      <caption>PWA Set Custom Shortcuts</caption>
+    </screenshot>
+  </screenshots>
 </component>
 
