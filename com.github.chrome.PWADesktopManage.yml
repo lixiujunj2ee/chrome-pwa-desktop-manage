@@ -37,6 +37,41 @@ modules:
       # 5. 安装图标
       - install -Dm644 com.github.chrome.PWADesktopManage.png "${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/com.github.chrome.PWADesktopManage.png"
 
+      # 6. 直接在 YAML 中写入 Metainfo (解决版本号和 GUI 显示)
+      - |
+        mkdir -p ${FLATPAK_DEST}/share/metainfo
+        cat <<EOF > ${FLATPAK_DEST}/share/metainfo/com.github.chrome.PWADesktopManage.metainfo.xml
+        <?xml version="1.0" encoding="UTF-8"?>
+        <component type="desktop-application">
+          <id>com.github.chrome.PWADesktopManage</id>
+          <name>PWA Desktop Manage</name>
+          <summary>管理你的 PWA 应用</summary>
+          <description>
+            <p>这是一个个人开发的 PWA 桌面管理工具。</p>
+          </description>
+          <launchable type="desktop-id">com.github.chrome.PWADesktopManage.desktop</launchable>
+          <releases>
+            <release version="1.0.0" date="2025-12-25" />
+          </releases>
+          <metadata_license>CC0-1.0</metadata_license>
+          <project_license>MIT</project_license>
+        </component>
+        EOF
+
+      # 7. 直接在 YAML 中写入 Desktop 文件 (解决 GUI 图标显示)
+      - |
+        mkdir -p ${FLATPAK_DEST}/share/applications
+        cat <<EOF > ${FLATPAK_DEST}/share/applications/com.github.chrome.PWADesktopManage.desktop
+        [Desktop Entry]
+        Name=PWA Desktop Manage
+        Comment=Manage Chrome PWAs
+        Exec=start_app.sh
+        Icon=com.github.chrome.PWADesktopManage
+        Terminal=false
+        Type=Application
+        Categories=Utility;
+        EOF
+
     sources:
       - type: dir
         path: .

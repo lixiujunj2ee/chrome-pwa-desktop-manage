@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.chrome.PWADesktopManage</id>
+  <name>PWADesktopManage</name>
+  <summary>PWA Desktop Manager</summary>
+  <launchable type="desktop-id">com.github.chrome.PWADesktopManage.desktop</launchable>
+  <releases>
+    <release version="1.0.0" date="2025-12-25" />
+  </releases>
+</component>
+
