@@ -1,3 +1,5 @@
+flatpak install --user PWA_Desktop_Manage_v1.flatpak
+
 use for chrome pwa desktop shortcut and app open it only one window
 
 chrome rpm stable version
