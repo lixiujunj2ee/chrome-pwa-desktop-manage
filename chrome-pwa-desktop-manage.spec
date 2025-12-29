@@ -5,7 +5,7 @@ Summary:        Manage Chrome Progressive Web Apps desktop shortcuts
 
 License:        MIT
 URL:            https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage
-Source0:        %{name}-%{version}.tar.gz
+#Source0:        %{name}-%{version}.tar.gz
 
 BuildArch:      noarch
 Requires:       python3
