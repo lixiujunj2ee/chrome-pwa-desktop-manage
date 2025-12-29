@@ -1,6 +1,7 @@
 Name:           chrome-pwa-desktop-manage
 Version:        1.0.6
 Release:        1%{?dist}
+Source0:        %{name}-%{version}.tar.gz
 Summary:        Manage Chrome Progressive Web Apps desktop shortcuts
 
 License:        MIT
