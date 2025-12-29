@@ -16,7 +16,7 @@ A user-friendly tool to manage Chrome PWA desktop shortcuts on Linux.
 Provides GUI management and ensures single-instance opening of PWAs.
 
 %prep
-%autosetup -c %{name}-%{version}
+%autosetup -S git
 
 %install
 rm -rf %{buildroot}
