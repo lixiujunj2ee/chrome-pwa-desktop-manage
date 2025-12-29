@@ -1,3 +1,6 @@
 [builder]
 builder = tito.builder.GitBuilder
 tagger = tito.tagger.VersionTagger
+
+[buildconfig]
+project_name = chrome-pwa-desktop-manage
