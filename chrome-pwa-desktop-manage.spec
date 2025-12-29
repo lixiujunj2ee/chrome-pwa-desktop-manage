@@ -15,8 +15,6 @@ Requires:       python3-os
 Requires:       python3-tendo
 Requires:       python3-subprocess
 Requires:       python3-threading
-# Go binary
-Requires:       glibc  # 通常自动满足
 
 %description
 A user-friendly tool to manage Chrome PWA desktop shortcuts on Linux.
