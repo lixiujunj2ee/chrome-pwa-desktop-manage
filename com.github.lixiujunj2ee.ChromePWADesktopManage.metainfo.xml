@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>com.github.chrome.PWADesktopManage</id>
+  <id>com.github.lixiujunj2ee.ChromePWADesktopManage</id>
 
-  <!-- AppStream 元数据许可证（强制） -->
   <metadata_license>CC0-1.0</metadata_license>
-
-  <name>Chrome PWA Desktop Manager</name>
-  <summary>Manage Chrome PWA desktop entries</summary>
+  <project_license>MIT</project_license>
+  <name>Chrome PWA Desktop Manage</name>
+  <summary>Manage Chrome Progressive Web Apps desktop shortcuts</summary>
 
   <description>
     <p>
-      Chrome PWA Desktop Manager is a graphical tool for managing
-      Chrome-based Progressive Web App desktop entries.
-    </p>
-    <p>
-      It allows users to list, clean, and regenerate PWA desktop files
-      in a simple and efficient way.
+      A user-friendly tool to manage Chrome PWA desktop shortcuts on Linux.
+      Ensures single instance opening and easy management of installed PWAs.
     </p>
   </description>
 
-  <!-- 版本发布信息（至少一个 release 是强制的） -->
   <releases>
-    <release version="1.0.0" date="2024-01-01">
+    <release version="1.0.0" date="2025-12-29">
       <description>
         <p>Initial release.</p>
       </description>
@@ -45,7 +39,6 @@
     <content_attribute id="money-purchasing">none</content_attribute>
   </content_rating>
 
-  <!-- 项目链接 -->
   <url type="homepage">
     https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage
   </url>
@@ -56,35 +49,41 @@
     https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage
   </url>
 
-  <!-- 截图 -->
   <screenshots>
     <screenshot type="default">
       <image width="1280" height="800">
-        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/images/demo_1.png
+        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screenshot1.png
       </image>
     </screenshot>
 
     <screenshot>
       <image width="1280" height="800">
-        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/images/demo_2.png
+        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screenshot2.png
       </image>
     </screenshot>
 
     <screenshot>
       <image width="1280" height="800">
-        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/images/demo_3.png
+        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screenshot3.png
       </image>
     </screenshot>
 
     <screenshot>
       <image width="1280" height="800">
-        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/images/demo_4.png
+        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screenshot4.png
       </image>
     </screenshot>
+
+    <screenshot>
+      <image width="1280" height="800">
+        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screenshot5.png
+      </image>
+    </screenshot>
+
   </screenshots>
 
-  <launchable type="desktop-id">
-    com.github.chrome.PWADesktopManage.desktop
-  </launchable>
+  <developer_name>lixiujunj2ee</developer_name>
+  <update_contact>lixiujunj2ee@gmail.com</update_contact>
+
 </component>
 

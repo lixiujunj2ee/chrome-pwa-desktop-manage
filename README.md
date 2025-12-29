@@ -1,11 +1,8 @@
-flatpak install --user PWA_Desktop_Manage_v1.flatpak
+firefox into install gnome extends ActivateWindowByTitle first
 
 use for chrome pwa desktop shortcut and app open it only one window
 
-chrome rpm stable version
+chrome rpm stable version -> /opt/google/chrome/google-chrome  if use other version  use ln -s link it
 
 gui easy to use!
 
-com.github.chrome.PWADesktopManage.desktop -> /usr/share/applications/
-
-com.github.chrome.PWADesktopManage.png  -> ~/.local/share/icons/hicolor/128x128/

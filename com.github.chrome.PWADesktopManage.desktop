@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=PWA Desktop Manager
-Exec=flatpak run com.github.chrome.PWADesktopManage
-Icon=com.github.chrome.PWADesktopManage
-StartupWMClass=chrome_pwa_desktop_manage
-Type=Application
-Terminal=false

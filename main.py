@@ -2,6 +2,12 @@ import flet as ft
 import os
 import subprocess
 import threading # Use threads instead of asynchronous operations to solve the white screen problem.
+from tendo import singleton
+
+try:
+    me = singleton.SingleInstance()
+except singleton.SingleInstanceException:
+    sys.exit(0)
 
 def main(page: ft.Page):
     page.title = "Chrome PWA Desktop Manager"
