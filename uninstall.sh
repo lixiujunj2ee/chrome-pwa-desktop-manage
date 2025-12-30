@@ -20,6 +20,8 @@ rm -f /usr/share/metainfo/chrome-pwa-desktop-manage.metainfo.xml
 
 update-desktop-database >/dev/null 2>&1 || true
 gtk-update-icon-cache /usr/share/icons/hicolor >/dev/null 2>&1 || true
+sudo rm -rf /var/cache/appstream/*
+sudo appstreamcli refresh-cache --force
 
 echo "==> Uninstall complete"
 

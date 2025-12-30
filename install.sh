@@ -54,6 +54,8 @@ install -Dm644 "${META_FILE}" \
 # ---- update caches (best effort) ----
 update-desktop-database >/dev/null 2>&1 || true
 gtk-update-icon-cache /usr/share/icons/hicolor >/dev/null 2>&1 || true
+sudo rm -rf /var/cache/appstream/*
+sudo appstreamcli refresh-cache --force
 
 echo "==> Installation complete"
 echo "==> Run with: chrome-pwa-desktop-manage"
