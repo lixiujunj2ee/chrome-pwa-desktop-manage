@@ -1,10 +1,11 @@
 [Desktop Entry]
 Name=PWA Desktop Manager
 Comment=Manage chrome appps desktop
-Exec=/usr/bin/chrome-pwa-desktop-manage %U
+Exec=setsid /usr/bin/chrome-pwa-desktop-manage %U
 Icon=chrome-pwa-desktop-manage
 StartupWMClass=chrome-pwa-desktop-manage
 Type=Application
 Terminal=false
 StartupNotify=true
 Categories=Utility;
+Keywords=Chrome;PWA;Manager;

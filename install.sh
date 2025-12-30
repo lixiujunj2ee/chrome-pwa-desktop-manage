@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
+export LOGIN_USER="$(getent passwd `who` | head -n 1 | cut -d : -f 1)"
+USER_HOME="/home/${LOGIN_USER}"
+
 APP_NAME="chrome-pwa-desktop-manage"
 DATA_DIR="/usr/share/${APP_NAME}"
 
@@ -32,7 +35,11 @@ install -Dm755 pwa "${BIN_PWA}"
 # launcher wrapper
 install -Dm755 /dev/stdin "${BIN_MAIN}" << 'EOF'
 #!/usr/bin/env bash
-exec python3 /usr/share/chrome-pwa-desktop-manage/main.py "$@"
+export LIBGL_ALWAYS_SOFTWARE=1
+export SDL_VIDEODRIVER=x11
+export GDK_BACKEND=x11
+APP_PATH="/usr/share/chrome-pwa-desktop-manage/main.py"
+exec python3 -u "$APP_PATH" "$@"
 EOF
 
 # ---- app data ----
@@ -46,6 +53,8 @@ install -Dm644 "${DESKTOP_FILE}" \
 # ---- icon ----
 install -Dm644 "icons/${ICON_FILE}" \
   "/usr/share/icons/hicolor/128x128/apps/${ICON_FILE}"
+install -Dm644 "icons/${ICON_FILE}" \
+  "/${USER_HOME}/.local/share/icons/hicolor/128x128/apps/${ICON_FILE}"
 
 # ---- metainfo ----
 install -Dm644 "${META_FILE}" \

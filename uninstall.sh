@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
+export LOGIN_USER="$(getent passwd `who` | head -n 1 | cut -d : -f 1)"
+USER_HOME="/home/${LOGIN_USER}"
+
 APP_NAME="chrome-pwa-desktop-manage"
 
 echo "==> Uninstalling ${APP_NAME}"
@@ -17,6 +20,7 @@ rm -rf /usr/share/${APP_NAME}
 rm -f /usr/share/applications/chrome-pwa-desktop-manage.desktop
 rm -f /usr/share/icons/hicolor/128x128/apps/chrome-pwa-desktop-manage.png
 rm -f /usr/share/metainfo/chrome-pwa-desktop-manage.metainfo.xml
+rm -f /${USER_HOME}/.local/share/icons/hicolor/128x128/apps/chrome-pwa-desktop-manage.png
 
 update-desktop-database >/dev/null 2>&1 || true
 gtk-update-icon-cache /usr/share/icons/hicolor >/dev/null 2>&1 || true
