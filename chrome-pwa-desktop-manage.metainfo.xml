@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>com.github.lixiujunj2ee.ChromePWADesktopManage</id>
+  <id>chrome-pwa-manage</id>
 
-  <metadata_license>CC0-1.0</metadata_license>
-  <project_license>MIT</project_license>
-  <name>Chrome PWA Desktop Manage</name>
+  <name>Chrome PWA Desktop Manager</name>
   <summary>Manage Chrome Progressive Web Apps desktop shortcuts</summary>
-
-  <description>
-    <p>
-      A user-friendly tool to manage Chrome PWA desktop shortcuts on Linux.
-      Ensures single instance opening and easy management of installed PWAs.
-    </p>
-  </description>
-
+  
   <releases>
     <release version="1.0.0" date="2025-12-29">
       <description>
@@ -22,66 +13,61 @@
     </release>
   </releases>
 
-  <!-- 内容分级（OARS 必需） -->
-  <content_rating type="oars-1.1">
-    <content_attribute id="violence-cartoon">none</content_attribute>
-    <content_attribute id="violence-realistic">none</content_attribute>
-    <content_attribute id="violence-fantasy">none</content_attribute>
-    <content_attribute id="drugs-alcohol">none</content_attribute>
-    <content_attribute id="drugs-narcotics">none</content_attribute>
-    <content_attribute id="drugs-tobacco">none</content_attribute>
-    <content_attribute id="sex-nudity">none</content_attribute>
-    <content_attribute id="sex-themes">none</content_attribute>
-    <content_attribute id="language-profanity">none</content_attribute>
-    <content_attribute id="language-humor">none</content_attribute>
-    <content_attribute id="language-sexual">none</content_attribute>
-    <content_attribute id="money-gambling">none</content_attribute>
-    <content_attribute id="money-purchasing">none</content_attribute>
-  </content_rating>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
 
-  <url type="homepage">
-    https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage
-  </url>
-  <url type="bugtracker">
-    https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage/issues
-  </url>
-  <url type="vcs-browser">
-    https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage
-  </url>
+  <categories>
+    <category>Utility</category>
+    <category>System</category>
+  </categories>
+
+  <launchable type="desktop-id">
+    chrome-pwa-desktop-manage.desktop
+  </launchable>
+
+  <icon type="local">chrome-pwa-desktop-manage</icon>
+
+  <description>
+    <p>
+      A user-friendly tool to manage Chrome PWA desktop shortcuts on Linux.
+      Ensures single instance opening and easy management of installed PWAs.
+    </p>
+  </description>
 
   <screenshots>
     <screenshot type="default">
-      <image width="1280" height="800">
-        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screenshot1.png
-      </image>
+	    <image>
+	      https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen1.png
+	    </image>
     </screenshot>
-
     <screenshot>
       <image width="1280" height="800">
-        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screenshot2.png
+        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen2.png
       </image>
     </screenshot>
-
     <screenshot>
       <image width="1280" height="800">
-        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screenshot3.png
+        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen3.png
       </image>
     </screenshot>
-
     <screenshot>
       <image width="1280" height="800">
-        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screenshot4.png
+        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen4.png
       </image>
     </screenshot>
-
     <screenshot>
       <image width="1280" height="800">
-        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screenshot5.png
+        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen5.png
       </image>
     </screenshot>
-
   </screenshots>
 
+  <content_rating type="oars-1.1"/>
+  
+  <url type="homepage"> https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage </url>
+  <url type="bugtracker"> https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage/issues </url>
+  <url type="vcs-browser"> https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage </url>
+  
   <developer_name>lixiujunj2ee</developer_name>
   <update_contact>lixiujunj2ee@gmail.com</update_contact>
 
