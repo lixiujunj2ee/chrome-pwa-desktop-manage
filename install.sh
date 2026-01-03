@@ -61,7 +61,7 @@ install -Dm644 "${META_FILE}" \
   "/usr/share/metainfo/${META_FILE}"
 
 # ---- update caches (best effort) ----
-ln -s ${BIN_PWA} ${DATA_DIR}/
+ln -s -f ${BIN_PWA} ${DATA_DIR}/
 update-desktop-database >/dev/null 2>&1 || true
 gtk-update-icon-cache /usr/share/icons/hicolor >/dev/null 2>&1 || true
 sudo rm -rf /var/cache/appstream/*
