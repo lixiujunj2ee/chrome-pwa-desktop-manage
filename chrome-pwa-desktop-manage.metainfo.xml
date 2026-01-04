@@ -11,6 +11,11 @@
         <p>Initial release.</p>
       </description>
     </release>
+    <release version="1.0.0" date="2025-12-29">
+      <description>
+        <p>Initial release.</p>
+      </description>
+    </release>
   </releases>
 
   <metadata_license>CC0-1.0</metadata_license>
@@ -68,7 +73,7 @@
   <url type="bugtracker"> https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage/issues </url>
   <url type="vcs-browser"> https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage </url>
   
-  <developer_name>lixiujunj2ee</developer_name>
+  <developer_name>Chrome PWA Desktop</developer_name>
   <update_contact>lixiujunj2ee@gmail.com</update_contact>
 
 </component>
