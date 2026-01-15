@@ -19,7 +19,7 @@ rm -rf /usr/share/${APP_NAME}
 
 rm -f /usr/share/applications/chrome-pwa-desktop-manage.desktop
 rm -f /usr/share/icons/hicolor/128x128/apps/chrome-pwa-desktop-manage.png
-rm -f /usr/share/metainfo/chrome-pwa-desktop-manage.metainfo.xml
+rm -f /usr/share/metainfo/com.google.chrome-pwa-desktop-manage.metainfo.xml
 rm -f /${USER_HOME}/.local/share/icons/hicolor/128x128/apps/chrome-pwa-desktop-manage.png
 
 update-desktop-database >/dev/null 2>&1 || true

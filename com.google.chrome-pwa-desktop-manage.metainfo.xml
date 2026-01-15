@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>chrome-pwa-manage</id>
+  <id>com.google.chrome-pwa-manage</id>
 
   <name>Chrome PWA Desktop Manager</name>
   <summary>Manage Chrome Progressive Web Apps desktop shortcuts</summary>
@@ -27,10 +27,10 @@
   </categories>
 
   <launchable type="desktop-id">
-    chrome-pwa-desktop-manage.desktop
+    com.google.chrome-pwa-desktop-manage.desktop
   </launchable>
 
-  <icon type="local">chrome-pwa-desktop-manage</icon>
+  <!--<icon type="local">chrome-pwa-desktop-manage</icon>-->
 
   <description>
     <p>
@@ -73,7 +73,10 @@
   <url type="bugtracker"> https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage/issues </url>
   <url type="vcs-browser"> https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage </url>
   
-  <developer_name>Chrome PWA Desktop</developer_name>
+  <developer id="com.google.chrome-pwa-manage.developer">
+    <name>The Chrome PWA Desktop Maintainers</name>
+    <url type="homepage">github.com</url>
+  </developer>
   <update_contact>lixiujunj2ee@gmail.com</update_contact>
 
 </component>

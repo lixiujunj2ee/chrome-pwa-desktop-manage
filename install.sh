@@ -12,7 +12,7 @@ BIN_MAIN="/usr/bin/chrome-pwa-desktop-manage"
 
 DESKTOP_FILE="chrome-pwa-desktop-manage.desktop"
 ICON_FILE="chrome-pwa-desktop-manage.png"
-META_FILE="chrome-pwa-desktop-manage.metainfo.xml"
+META_FILE="com.google.chrome-pwa-desktop-manage.metainfo.xml"
 
 echo "==> Installing ${APP_NAME}"
 
