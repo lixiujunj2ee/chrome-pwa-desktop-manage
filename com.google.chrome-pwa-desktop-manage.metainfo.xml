@@ -30,7 +30,7 @@
     com.google.chrome-pwa-desktop-manage.desktop
   </launchable>
 
-  <!--<icon type="local">chrome-pwa-desktop-manage</icon>-->
+  <icon type="remote">https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/icons/chrome-pwa-desktop-manage.png</icon>
 
   <description>
     <p>
