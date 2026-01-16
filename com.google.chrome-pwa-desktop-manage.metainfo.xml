@@ -41,32 +41,27 @@
 
   <screenshots>
     <screenshot type="default">
-	    <image>
-	      https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen1.png
-	    </image>
+      <caption>Application main window managing PWAs List desktop</caption>
+	    <image type="source" width="1280" height="800">https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen1.png</image>
     </screenshot>
     <screenshot>
-      <image width="1280" height="800">
-        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen2.png
-      </image>
+      <caption>Application main window managing PWAs Edit icon</caption>
+      <image type="source" width="1280" height="800">https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen2.png</image>
     </screenshot>
     <screenshot>
-      <image width="1280" height="800">
-        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen3.png
-      </image>
+      <caption>Application main window managing PWAs Use shell pwa</caption>
+      <image type="source" width="1280" height="800">https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen3.png</image>
     </screenshot>
     <screenshot>
-      <image width="1280" height="800">
-        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen4.png
-      </image>
+      <caption>Application main window managing PWAs Set custom shotcuts</caption>
+      <image type="source" width="1280" height="800">https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen4.png</image>
     </screenshot>
     <screenshot>
-      <image width="1280" height="800">
-        https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen5.png
-      </image>
+      <caption>Application main window managing PWAs on chrome create apps</caption>
+      <image type="source" width="1280" height="800">https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen5.png</image>
     </screenshot>
   </screenshots>
-
+    
   <content_rating type="oars-1.1"/>
   
   <url type="homepage"> https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage </url>
