@@ -3,188 +3,137 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.io.*;
 import java.nio.file.*;
-import java.util.Enumeration;
+import java.util.*;
 
 public class PwaManager extends JFrame {
     private final String BASE_PATH = System.getProperty("user.home") + "/.local/share/applications/";
     private DefaultListModel<String> listModel = new DefaultListModel<>();
     private JList<String> fileList = new JList<>(listModel);
     private JTextArea contentDisplay = new JTextArea();
-    private JLabel detailTitle = new JLabel("Select a file to view details");
     private JTextField searchInput = new JTextField();
+    private JSplitPane splitPane; 
     private String currentSelectedFile = null;
 
     public PwaManager() {
-        setTitle("Chrome PWA Desktop Manager");
-        setSize(1100, 800); 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout(10, 10));
+        setTitle("PWA Manager");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setExtendedState(MAXIMIZED_BOTH);
+        setLayout(new BorderLayout());
 
-        // --- Left Sidebar ---
-        JPanel leftPanel = new JPanel(new BorderLayout(5, 5));
-        leftPanel.setPreferredSize(new Dimension(320, 0));
-        leftPanel.setBorder(new EmptyBorder(10, 10, 10, 5));
-        
+        // 加载图标
+        try {
+            java.net.URL iconURL = getClass().getResource("/icons/chrome-pwa-desktop-manage.png");
+            if (iconURL != null) setIconImage(new ImageIcon(iconURL).getImage());
+        } catch (Exception e) {}
+
+        // 左侧：菜单
+        JPanel left = new JPanel(new BorderLayout(10, 10));
+        left.setBorder(new EmptyBorder(10, 10, 10, 10));
+        left.setMinimumSize(new Dimension(400, 0)); // 确保最小宽度
+
+        searchInput.setFont(new Font("SansSerif", Font.PLAIN, 22));
         searchInput.setBorder(BorderFactory.createTitledBorder("Search..."));
         searchInput.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) { filterFiles(); }
+            public void keyReleased(java.awt.event.KeyEvent e) { filterFiles(); }
         });
 
-        fileList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        fileList.setFixedCellHeight(45); // Larger clickable area
+        fileList.setFont(new Font("SansSerif", Font.PLAIN, 22));
+        fileList.setFixedCellHeight(50);
         fileList.addListSelectionListener(e -> {
-            if (!e.getValueIsAdjusting()) readFileContent(fileList.getSelectedValue());
+            if (!e.getValueIsAdjusting()) {
+                String val = fileList.getSelectedValue();
+                if (val != null) readFile(val);
+            }
         });
 
-        leftPanel.add(searchInput, BorderLayout.NORTH);
-        leftPanel.add(new JScrollPane(fileList), BorderLayout.CENTER);
+        left.add(searchInput, BorderLayout.NORTH);
+        left.add(new JScrollPane(fileList), BorderLayout.CENTER);
 
-        // --- Right Content ---
-        JPanel rightPanel = new JPanel(new BorderLayout(10, 10));
-        rightPanel.setBorder(new EmptyBorder(10, 5, 10, 10));
-        
-        detailTitle.setFont(new Font("SansSerif", Font.BOLD, 20));
+        // 右侧：内容
+        JPanel right = new JPanel(new BorderLayout(10, 10));
+        right.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+        contentDisplay.setFont(new Font("Monospaced", Font.PLAIN, 24));
         contentDisplay.setEditable(false);
-        contentDisplay.setFont(new Font("Monospaced", Font.PLAIN, 16));
-        contentDisplay.setMargin(new Insets(10, 10, 10, 10));
-        
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 10));
-        JButton addBtn = new JButton("Add Shortcut");
-        JButton iconBtn = new JButton("Change Icon");
-        JButton delBtn = new JButton("Delete");
+        contentDisplay.setLineWrap(true);
 
-        addBtn.addActionListener(e -> showAddDialog());
-        iconBtn.addActionListener(e -> showIconDialog());
-        delBtn.addActionListener(e -> deleteShortcut());
+        JPanel btns = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        Font f20 = new Font("SansSerif", Font.BOLD, 20);
+        JButton b1 = new JButton("Add"); b1.setFont(f20);
+        JButton b2 = new JButton("Icon"); b2.setFont(f20);
+        JButton b3 = new JButton("Delete"); b3.setFont(f20);
 
-        buttonPanel.add(addBtn); buttonPanel.add(iconBtn); buttonPanel.add(delBtn);
+        b1.addActionListener(e -> showAdd());
+        b2.addActionListener(e -> showIcon());
+        b3.addActionListener(e -> doDelete());
 
-        rightPanel.add(detailTitle, BorderLayout.NORTH);
-        rightPanel.add(new JScrollPane(contentDisplay), BorderLayout.CENTER);
-        rightPanel.add(buttonPanel, BorderLayout.SOUTH);
+        btns.add(b1); btns.add(b2); btns.add(b3);
+        right.add(new JScrollPane(contentDisplay), BorderLayout.CENTER);
+        right.add(btns, BorderLayout.SOUTH);
 
-        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, rightPanel);
-        splitPane.setDividerLocation(320);
+        // 分割面板修复
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, left, right);
+        splitPane.setDividerLocation(400); // 初始位置
+        splitPane.setResizeWeight(0.0);    // 拉伸窗口时左侧不动
         add(splitPane, BorderLayout.CENTER);
 
-        refreshAll();
-    }
-
-    private void refreshAll() {
         filterFiles();
-        contentDisplay.setText("");
-        detailTitle.setText("Select a file");
     }
 
     private void filterFiles() {
-        String term = searchInput.getText().toLowerCase();
+        String q = searchInput.getText().toLowerCase();
         listModel.clear();
-        File dir = new File(BASE_PATH);
-        if (!dir.exists()) dir.mkdirs();
-        File[] files = dir.listFiles((d, name) -> name.endsWith(".desktop"));
-        if (files != null) {
-            for (File f : files) {
-                if (f.getName().toLowerCase().contains(term)) listModel.addElement(f.getName());
-            }
+        File d = new File(BASE_PATH);
+        if (d.exists()) {
+            File[] fs = d.listFiles((dir, n) -> n.endsWith(".desktop"));
+            if (fs != null) for (File f : fs) if (f.getName().toLowerCase().contains(q)) listModel.addElement(f.getName());
         }
     }
 
-    private void readFileContent(String filename) {
-        if (filename == null) return;
-        currentSelectedFile = filename;
-        detailTitle.setText(filename);
-        try {
-            contentDisplay.setText(Files.readString(Paths.get(BASE_PATH, filename)));
-            contentDisplay.setCaretPosition(0);
-        } catch (IOException e) {
-            contentDisplay.setText("Error reading file");
+    private void readFile(String n) {
+        currentSelectedFile = n;
+        try { contentDisplay.setText(Files.readString(Paths.get(BASE_PATH, n))); } 
+        catch (Exception e) { contentDisplay.setText("Error"); }
+    }
+
+    private void showAdd() {
+        JTextField id = new JTextField(); JTextField nm = new JTextField(); JTextField fl = new JTextField();
+        Object[] m = {"APP_ID:", id, "APP_NAME:", nm, "FILE_NAME:", fl};
+        if (JOptionPane.showConfirmDialog(this, m, "Add", 2) == 0) runCmd("create", id.getText(), nm.getText(), fl.getText());
+    }
+
+    private void showIcon() {
+        JTextField p = new JTextField(); JTextField id = new JTextField();
+        Object[] m = {"PNG_PATH:", p, "APP_ID:", id};
+        if (JOptionPane.showConfirmDialog(this, m, "Icon", 2) == 0) runCmd("icon", p.getText(), id.getText());
+    }
+
+    private void doDelete() {
+        if (currentSelectedFile != null && JOptionPane.showConfirmDialog(this, "Delete?") == 0) {
+            new File(BASE_PATH, currentSelectedFile).delete();
+            filterFiles(); contentDisplay.setText("");
         }
     }
 
-    // --- Functional Dialogs ---
-
-    private void showAddDialog() {
-        JTextField appId = new JTextField(20);
-        JTextField appName = new JTextField(20);
-        JTextField fileName = new JTextField(20);
-
-        JPanel panel = new JPanel(new GridLayout(0, 1, 5, 5));
-        panel.add(new JLabel("APP_ID:")); panel.add(appId);
-        panel.add(new JLabel("APP_NAME:")); panel.add(appName);
-        panel.add(new JLabel("FILE_NAME:")); panel.add(fileName);
-
-        int result = JOptionPane.showConfirmDialog(this, panel, "Add Shortcut", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            runCommand("create", appId.getText(), appName.getText(), fileName.getText());
-        }
-    }
-
-    private void showIconDialog() {
-        JTextField pngPath = new JTextField(20);
-        JTextField appId = new JTextField(20);
-
-        JPanel panel = new JPanel(new GridLayout(0, 1, 5, 5));
-        panel.add(new JLabel("PNG_PATH:")); panel.add(pngPath);
-        panel.add(new JLabel("APP_ID:")); panel.add(appId);
-
-        int result = JOptionPane.showConfirmDialog(this, panel, "Change Icon", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            runCommand("icon", pngPath.getText(), appId.getText());
-        }
-    }
-
-    private void deleteShortcut() {
-        if (currentSelectedFile == null) return;
-        int confirm = JOptionPane.showConfirmDialog(this, "Delete " + currentSelectedFile + "?", "Confirm", JOptionPane.YES_NO_OPTION);
-        if (confirm == JOptionPane.YES_OPTION) {
-            try {
-                Files.deleteIfExists(Paths.get(BASE_PATH, currentSelectedFile));
-                refreshAll();
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(this, "Delete failed: " + e.getMessage());
-            }
-        }
-    }
-
-    // --- Subprocess execution ---
-    private void runCommand(String... args) {
+    private void runCmd(String... a) {
         new Thread(() -> {
             try {
-                String pwaBin = System.getProperty("user.dir") + File.separator + "pwa";
-                String[] cmd = new String[args.length + 1];
-                cmd[0] = pwaBin;
-                System.arraycopy(args, 0, cmd, 1, args.length);
-
-                Process process = new ProcessBuilder(cmd).start();
-                int exitCode = process.waitFor();
-
-                SwingUtilities.invokeLater(() -> {
-                    if (exitCode == 0) refreshAll();
-                    else JOptionPane.showMessageDialog(this, "Operation failed (Exit Code: " + exitCode + ")");
-                });
-            } catch (Exception ex) {
-                SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, "System Error: " + ex.getMessage()));
-            }
+                String p = System.getProperty("user.dir") + File.separator + "pwa";
+                ArrayList<String> c = new ArrayList<>(); c.add(p); Collections.addAll(c, a);
+                int code = new ProcessBuilder(c).start().waitFor();
+                if (code == 0) SwingUtilities.invokeLater(this::filterFiles);
+            } catch (Exception e) {}
         }).start();
     }
 
-    public static void setGlobalFont(Font font) {
-        Enumeration<Object> keys = UIManager.getDefaults().keys();
-        while (keys.hasMoreElements()) {
-            Object key = keys.nextElement();
-            if (UIManager.get(key) instanceof javax.swing.plaf.FontUIResource) {
-                UIManager.put(key, font);
-            }
-        }
-    }
-
     public static void main(String[] args) {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            setGlobalFont(new Font("SansSerif", Font.PLAIN, 18)); // Large font for all UI elements
-        } catch (Exception e) {}
-
-        SwingUtilities.invokeLater(() -> new PwaManager().setVisible(true));
+        try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); } catch (Exception e) {}
+        SwingUtilities.invokeLater(() -> {
+            PwaManager m = new PwaManager();
+            m.setVisible(true);
+            // 解决 Linux 下初始化时左侧菜单被挤压的问题
+            m.splitPane.setDividerLocation(500); 
+        });
     }
 }
 
