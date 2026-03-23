@@ -22,13 +22,6 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-#---- lib ------
-for pkg in flet packaging tendo; do
-    if ! pip show $pkg > /dev/null 2>&1; then
-        pip install $pkg
-    fi
-done
-
 # ---- binaries ----
 install -Dm755 pwa "${BIN_PWA}"
 
@@ -37,7 +30,7 @@ install -Dm755 /dev/stdin "${BIN_MAIN}" << 'EOF'
 #!/usr/bin/env bash
 APP_PATH="/usr/share/chrome-pwa-desktop-manage/"
 cd "$APP_PATH"
-exec java -jar PwaManager.jar
+exec /usr/java/jdk-17/bin/java -jar PwaManager.jar
 EOF
 
 # ---- app data ----
@@ -63,7 +56,7 @@ ln -s -f ${BIN_PWA} ${DATA_DIR}/
 update-desktop-database >/dev/null 2>&1 || true
 gtk-update-icon-cache /usr/share/icons/hicolor >/dev/null 2>&1 || true
 sudo rm -rf /var/cache/appstream/*
-sudo appstreamcli refresh-cache --force
+sudo appstreamcli refresh-cache
 
 echo "==> Installation complete"
 echo "==> Run with: chrome-pwa-desktop-manage"
