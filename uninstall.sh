@@ -25,7 +25,9 @@ rm -f /${USER_HOME}/.local/share/icons/hicolor/128x128/apps/chrome-pwa-desktop-m
 update-desktop-database >/dev/null 2>&1 || true
 gtk-update-icon-cache /usr/share/icons/hicolor >/dev/null 2>&1 || true
 sudo rm -rf /var/cache/appstream/*
-sudo appstreamcli refresh-cache --force
+sudo appstreamcli refresh-cache
+pkill software
+sudo dnf clean all
 
 echo "==> Uninstall complete"
 
