@@ -4,7 +4,7 @@ Release:        1%{?dist}
 Summary:        Manage Chrome PWA desktop shortcuts
 
 License:        MIT
-URL:            https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage
+URL:            https://github.com/pixel-jey/chrome-pwa-desktop-manage
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 
 BuildArch:      noarch
@@ -31,26 +31,26 @@ install -d %{buildroot}%{_datadir}/%{name}
 cp -a *.py pwa %{buildroot}%{_datadir}/%{name}/
 
 # desktop
-install -Dm644 com.github.lixiujunj2ee.ChromePWADesktopManage.desktop \
-  %{buildroot}%{_datadir}/applications/com.github.lixiujunj2ee.ChromePWADesktopManage.desktop
+install -Dm644 com.github.pixel-jey.ChromePWADesktopManage.desktop \
+  %{buildroot}%{_datadir}/applications/com.github.pixel-jey.ChromePWADesktopManage.desktop
 
 # icon
 install -Dm644 icons/chrome-pwa-desktop-manage.png \
-  %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/com.github.lixiujunj2ee.ChromePWADesktopManage.png
+  %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/com.github.pixel-jey.ChromePWADesktopManage.png
 
 # metainfo
-install -Dm644 com.github.lixiujunj2ee.ChromePWADesktopManage.metainfo.xml \
-  %{buildroot}%{_metainfodir}/com.github.lixiujunj2ee.ChromePWADesktopManage.metainfo.xml
+install -Dm644 com.github.pixel-jey.ChromePWADesktopManage.metainfo.xml \
+  %{buildroot}%{_metainfodir}/com.github.pixel-jey.ChromePWADesktopManage.metainfo.xml
 
 %files
 %{_bindir}/pwa
 %{_bindir}/chrome-pwa-desktop-manage
 %{_datadir}/%{name}
-%{_datadir}/applications/com.github.lixiujunj2ee.ChromePWADesktopManage.desktop
-%{_datadir}/icons/hicolor/128x128/apps/com.github.lixiujunj2ee.ChromePWADesktopManage.png
-%{_metainfodir}/com.github.lixiujunj2ee.ChromePWADesktopManage.metainfo.xml
+%{_datadir}/applications/com.github.pixel-jey.ChromePWADesktopManage.desktop
+%{_datadir}/icons/hicolor/128x128/apps/com.github.pixel-jey.ChromePWADesktopManage.png
+%{_metainfodir}/com.github.pixel-jey.ChromePWADesktopManage.metainfo.xml
 
 %changelog
-* Mon Dec 29 2025 lixiujunj2ee - 1.0.6-1
+* Mon Dec 29 2025 pixel-jey - 1.0.6-1
 - Initial COPR release
 

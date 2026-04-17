@@ -35,7 +35,7 @@
     com.google.chrome-pwa-desktop-manage.desktop
   </launchable>
 
-  <icon type="remote">https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/icons/chrome-pwa-desktop-manage.png</icon>
+  <icon type="remote">https://raw.githubusercontent.com/pixel-jey/chrome-pwa-desktop-manage/main/icons/chrome-pwa-desktop-manage.png</icon>
 
   <description>
     <p>
@@ -47,37 +47,37 @@
   <screenshots>
     <screenshot type="default">
       <caption>Application main window managing PWAs List desktop</caption>
-	    <image type="source" width="1280" height="800">https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen1.png</image>
+	    <image type="source" width="1280" height="800">https://raw.githubusercontent.com/pixel-jey/chrome-pwa-desktop-manage/main/screenshots/screen1.png</image>
     </screenshot>
     <screenshot>
       <caption>Application main window managing PWAs Edit icon</caption>
-      <image type="source" width="1280" height="800">https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen2.png</image>
+      <image type="source" width="1280" height="800">https://raw.githubusercontent.com/pixel-jey/chrome-pwa-desktop-manage/main/screenshots/screen2.png</image>
     </screenshot>
     <screenshot>
       <caption>Application main window managing PWAs Use shell pwa</caption>
-      <image type="source" width="1280" height="800">https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen3.png</image>
+      <image type="source" width="1280" height="800">https://raw.githubusercontent.com/pixel-jey/chrome-pwa-desktop-manage/main/screenshots/screen3.png</image>
     </screenshot>
     <screenshot>
       <caption>Application main window managing PWAs Set custom shotcuts</caption>
-      <image type="source" width="1280" height="800">https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen4.png</image>
+      <image type="source" width="1280" height="800">https://raw.githubusercontent.com/pixel-jey/chrome-pwa-desktop-manage/main/screenshots/screen4.png</image>
     </screenshot>
     <screenshot>
       <caption>Application main window managing PWAs on chrome create apps</caption>
-      <image type="source" width="1280" height="800">https://raw.githubusercontent.com/lixiujunj2ee/chrome-pwa-desktop-manage/main/screenshots/screen5.png</image>
+      <image type="source" width="1280" height="800">https://raw.githubusercontent.com/pixel-jey/chrome-pwa-desktop-manage/main/screenshots/screen5.png</image>
     </screenshot>
   </screenshots>
     
   <content_rating type="oars-1.1"/>
   
-  <url type="homepage"> https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage </url>
-  <url type="bugtracker"> https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage/issues </url>
-  <url type="vcs-browser"> https://github.com/lixiujunj2ee/chrome-pwa-desktop-manage </url>
+  <url type="homepage"> https://github.com/pixel-jey/chrome-pwa-desktop-manage </url>
+  <url type="bugtracker"> https://github.com/pixel-jey/chrome-pwa-desktop-manage/issues </url>
+  <url type="vcs-browser"> https://github.com/pixel-jey/chrome-pwa-desktop-manage </url>
   
   <developer id="com.google.chrome-pwa-manage.developer">
     <name>The Chrome PWA Desktop Maintainers</name>
     <url type="homepage">github.com</url>
   </developer>
-  <update_contact>lixiujunj2ee@gmail.com</update_contact>
+  <update_contact>pixel-jey@gmail.com</update_contact>
 
 </component>
 
