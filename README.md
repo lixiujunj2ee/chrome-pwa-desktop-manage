@@ -24,6 +24,13 @@ use java write it again and need install jdk 17
 /usr/java/jdk-17
 you can pip remove flet and never use it
 
+python flet very bad for update the version and run start slow
+java is very good at the stable version the update the linux high or low version and run very fast and stable
+
+1.0 python
+2.0 java
+
+
 ---
 
 ## ☕ Support
@@ -33,9 +40,3 @@ If this **PWA Manager** helped you streamline your desktop, consider supporting 
 - **USDT Address:** `THfpN3p7US5rMRAsDVPua3KkPvd7q7i8Vu`
 
 > **Tip:** Your tips help me keep these tools open-source and free of bloatware.
-
-python flet very bad for update the version and run start slow
-java is very good at the stable version the update the linux high or low version and run very fast and stable
-
-1.0 python
-2.0 java
