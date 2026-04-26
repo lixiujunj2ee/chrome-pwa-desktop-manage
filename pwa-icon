@@ -34,6 +34,12 @@ if [ -f "$ICON_FILE" ]; then
     # 7. Execute file command to display information and dimensions
     echo "Current file info:"
     file 64.png
+    python3 -c "from PIL import Image; \
+    img = Image.open('64.png').convert('RGBA'); \
+    new = Image.new('RGBA', (128, 128), (0, 0, 0, 0)); \
+    new.paste(img, ((128 - img.size[0]) // 2, (128 - img.size[1]) // 2), img); \
+    new.save('128.png')"
+    file 128.png
 else
     echo "ERROR: Could not find any '*64.png' file inside the App directory."
     exit 1
